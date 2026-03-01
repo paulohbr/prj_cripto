@@ -1,0 +1,50 @@
+pandas==2.1.4
+numpy==1.24.3
+scikit-learn==1.3.2
+python-binance==1.0.19
+streamlit==1.29.0
+plotly==5.18.0
+requests==2.31.0
+joblib==1.3.2
+
+# ============================================
+# BIBLIOTECAS AVANÇADAS PARA MELHORAR ESTRATÉGIA
+# ============================================
+
+# Análise Técnica Avançada
+ta==0.11.0  # Biblioteca Python pura para indicadores técnicos (sem dependência de TA-Lib C)
+# pandas-ta removido - não está disponível no PyPI, usar apenas 'ta' que é mais estável
+
+# Machine Learning Avançado
+xgboost==2.0.3  # Gradient Boosting extremamente eficiente (melhor que Random Forest)
+lightgbm==4.1.0  # Gradient Boosting rápido e eficiente
+catboost==1.2.2  # Gradient Boosting otimizado para dados categóricos
+
+# Otimização de Hiperparâmetros
+optuna==3.4.0  # Framework de otimização automática de hiperparâmetros
+hyperopt==0.2.7  # Otimização bayesiana de hiperparâmetros
+
+# Análise de Séries Temporais
+statsmodels==0.14.0  # Modelos estatísticos avançados para séries temporais
+prophet==1.1.5  # Previsão de séries temporais do Facebook (muito eficaz)
+
+# Backtesting e Otimização de Estratégias
+backtrader==1.9.78.123  # Framework completo de backtesting
+vectorbt>=0.26.0  # Backtesting vetorizado ultra-rápido (versão compatível com Python 3.11)
+
+# Análise de Sentimento e Dados Alternativos
+vaderSentiment==3.3.2  # Análise de sentimento para textos
+textblob==0.17.1  # Processamento de linguagem natural
+
+# Visualização Avançada
+mplfinance==0.12.10b0  # Gráficos financeiros profissionais (candlesticks, etc)
+
+# Utilitários
+python-dotenv==1.0.0  # Gerenciamento de variáveis de ambiente (.env)
+schedule==1.2.0  # Agendamento de tarefas
+openai>=1.0.0  # API do Perplexity (usa protocolo OpenAI)
+
+#Digite sua API Key: Pi8vMxNXuXscKe6lvT9pWAzvQb6mIa98HJ8bwMwgQFCofrg8aP34qEYNNCFrN7tj
+#Digite sua API Secret: 6xCIdtzaSheKBaTkJalm1hejDcvTMfqPf3OSKP69gb8whUXKh2ZmpSQu68yaYmiW
+# api gemini: AIzaSyAWM8WNeSxaLyADnIwLNAsqO8SdMc3bXiI
+# api Perplexity: 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

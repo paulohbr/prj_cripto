@@ -1,0 +1,21 @@
+[Unit]
+Description=Trading Dashboard Service
+After=network.target trading-api.service
+Wants=trading-api.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/user/projetos/prj_criptos
+Environment="PATH=/home/user/projetos/venv_binance/bin:/usr/local/bin:/usr/bin:/bin"
+ExecStart=/home/user/projetos/venv_binance/bin/streamlit run Dashboard_API.py --server.port 8501 --server.headless true --server.address 0.0.0.0
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+# Garante que roda em background
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+[Unit]
+Description=Trading Bot Service
+After=network.target trading-api.service
+Requires=trading-api.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/user/projetos/prj_criptos
+Environment="PATH=/home/user/projetos/venv_binance/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="PYTHONUNBUFFERED=1"
+ExecStart=/home/user/projetos/venv_binance/bin/python3 run_bot_auto.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/user/projetos/prj_criptos/logs/bot.log
+StandardError=append:/home/user/projetos/prj_criptos/logs/bot.log
+# Garante que o diretório de logs existe
+ExecStartPre=/bin/mkdir -p /home/user/projetos/prj_criptos/logs
+ExecStartPre=/bin/touch /home/user/projetos/prj_criptos/logs/bot.log
+# Garante que roda em background
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+

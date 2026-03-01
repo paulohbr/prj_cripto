@@ -1,0 +1,20 @@
+[Unit]
+Description=Trading API Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/user/projetos/prj_criptos
+Environment="PATH=/home/user/projetos/venv_binance/bin:/usr/local/bin:/usr/bin:/bin"
+ExecStart=/home/user/projetos/venv_binance/bin/python3 api_trading.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+# Garante que roda em background
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

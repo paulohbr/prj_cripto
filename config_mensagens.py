@@ -1,0 +1,175 @@
+#!/usr/bin/env python3
+"""
+Configuração de Mensagens - Todas as mensagens parametrizadas
+=============================================================
+Todas as mensagens do sistema devem estar aqui, sem strings hardcoded no código.
+"""
+
+class Mensagens:
+    """Todas as mensagens do sistema parametrizadas"""
+    
+    # === INICIALIZAÇÃO ===
+    SEPARADOR = "=" * 70
+    INICIANDO = "🚀 INICIANDO BOT DE TRADING - SCALPING 5 MINUTOS v5.1"
+    CONECTANDO = "📡 Conectando à Binance..."
+    MODO_SIMULACAO_FORCADO = "🎮 MODO: SIMULAÇÃO (forçado)"
+    MODO_REAL_FORCADO = "💰 MODO: REAL (forçado)"
+    MODO_REAL_AUTO = "💰 MODO: REAL (auto-detectado)"
+    MODO_SIMULACAO_AUTO = "🎮 MODO: SIMULAÇÃO (auto-detectado)"
+    BANCO_DADOS = "💾 Banco de dados: {path}"
+    CONFIGURACOES = "⚙️ CONFIGURAÇÕES:"
+    TIMEFRAME = "   📊 Timeframe: {timeframe}"
+    CAPITAL_OP = "   💵 Capital por operação: ${capital}"
+    CAPITAL_MAX = "   💰 Capital máximo: ${capital}"
+    MAX_POSICOES = "   📦 Máx posições: {max_pos}"
+    STOP_LOSS = "   🛑 Stop Loss: -{pct:.1f}%"
+    TAKE_PROFIT = "   🎯 Take Profit: +{pct:.1f}%"
+    TEMPO_MAX = "   ⏰ Tempo máximo: {minutos} minutos"
+    SCORE_MIN = "   📈 Score mínimo: {score:.0f}%"
+    RSI = "   📊 RSI: {min} - {max}"
+    MOMENTUM_MIN = "   📈 Momentum mínimo: +{pct:.1f}%"
+    VOLUME_MIN = "   📊 Volume mínimo: {ratio}x da média"
+    VELAS_VERDES_MIN = "   🕯️ Velas verdes mínimo: {min}"
+    INTERVALO_ANALISE = "   🔄 Intervalo análise: {intervalo}s"
+    INICIALIZANDO_BANCO = "💾 Inicializando banco de dados..."
+    BANCO_OK = "💾 Banco de dados OK"
+    
+    # === ANÁLISE ===
+    COOLDOWN = "⏳ Cooldown: {tempo:.0f}s restantes"
+    BUSCANDO_DADOS = "📡 Buscando dados de {timeframe}..."
+    DADOS_INSUFICIENTES = "❌ Dados insuficientes ({num_velas} velas)"
+    PRECO_ATUAL_ERRO = "❌ Não conseguiu preço atual"
+    ERRO_KLINES = "❌ Erro ao buscar klines: {erro}"
+    
+    # === BLOQUEIOS ===
+    DOJI_DETECTADO = "🚫 DOJI DETECTADO: Indecisão do mercado - BLOQUEIO ABSOLUTO"
+    REVERSAO_DETECTADA = "🚫 REVERSÃO DETECTADA: Estava subindo e agora caiu bruscamente - BLOQUEIO"
+    QUEDA_RECENTE = "🚫 QUEDA RECENTE: Preço caiu significativamente nas últimas candles - BLOQUEIO"
+    VELA_EXTREMAMENTE_NEGATIVA = "🚫 VELA EXTREMAMENTE NEGATIVA: Corpo > {pct:.0f}% do range - BLOQUEIO"
+    VELAS_NEGATIVAS_CONSECUTIVAS = "🚫 VELAS NEGATIVAS CONSECUTIVAS: {num} velas vermelhas seguidas - BLOQUEIO"
+    MUITOS_CANDLES_NEGATIVOS = "🚫 MUITOS CANDLES NEGATIVOS: {num} candles vermelhos nas últimas 5 - BLOQUEIO"
+    ULTIMA_VELA_NEGATIVA = "🚫 ÚLTIMA VELA NEGATIVA: Última vela não é verde - BLOQUEIO"
+    
+    # === NÍVEIS DE VALIDAÇÃO ===
+    SEM_FORCA_CANDLES = "🚫 SEM FORÇA NOS CANDLES: Apenas {candles_verdes} candles verdes, momentum: {momentum:.2f}% - BLOQUEIO"
+    NIVEL_1_1_MOMENTUM_MUITO_NEGATIVO = "🚫 NÍVEL 1.1: Momentum muito negativo ({momentum:+.2f}% < -1%) - BLOQUEIO ABSOLUTO"
+    NIVEL_1_1_MOMENTUM_ATUAL_NEGATIVO = "🚫 NÍVEL 1.1: Momentum muito negativo ({momentum:+.2f}%) e atual também - BLOQUEIO"
+    NIVEL_1_2_VOLUME_MUITO_BAIXO = "🚫 NÍVEL 1.2: Volume muito baixo ({vol_ratio:.2f}x < 0.5x) - BLOQUEIO ABSOLUTO"
+    NIVEL_1_3_VARIACAO_MUITO_NEGATIVA = "🚫 NÍVEL 1.3: Variação muito negativa ({variacao:+.3f}%) - BLOQUEIO ABSOLUTO"
+    NIVEL_2_1_VOLUME_INSUFICIENTE = "🚫 NÍVEL 2.1: Volume insuficiente ({vol_ratio:.2f}x < {min}x)"
+    NIVEL_2_2_RSI_FORA_FAIXA = "🚫 NÍVEL 2.2: RSI fora da faixa ({rsi:.1f} - deve estar entre {min} e {max})"
+    NIVEL_2_3_MOMENTUM_INSUFICIENTE = "🚫 NÍVEL 2.3: Momentum insuficiente (hist: {momentum_hist:+.2f}%, atual: {momentum_atual:+.2f}%)"
+    NIVEL_2_5_TENDENCIA_BAIXA_FORTE = "🚫 NÍVEL 2.5: Tendência BAIXA_FORTE muito negativa ({tendencia}, momentum: {momentum:+.2f}%)"
+    NIVEL_2_6_PRECO_ABAIXO_EMA9 = "🚫 NÍVEL 2.6: Preço muito abaixo da EMA9 ({distancia:+.2f}% < -1%)"
+    NIVEL_2_7_MUITO_PROXIMO_RESISTENCIA = "🚫 NÍVEL 2.7: Muito próximo da resistência ({distancia:.2f}% < 0.5%) - EVITANDO TOPO"
+    NIVEL_2_4_VARIACAO_MUITO_NEGATIVA = "🚫 NÍVEL 2.4: Variação muito negativa ({variacao:+.3f}% < -0.5%)"
+    
+    # === CONFIRMAÇÕES POSITIVAS ===
+    NIVEL_3_1_VARIACAO_POSITIVA = "✅ NÍVEL 3.1: Variação atual positiva (+{variacao:.3f}%)"
+    NIVEL_3_1_VARIACAO_NEUTRA = "✅ NÍVEL 3.1: Variação atual quase neutra ({variacao:+.3f}%)"
+    NIVEL_3_1_VARIACAO_NEGATIVA = "❌ NÍVEL 3.1: Variação atual negativa ({variacao:+.3f}%)"
+    NIVEL_3_2_MOMENTUM_FORTE = "✅ NÍVEL 3.2: Momentum histórico forte (+{momentum:.2f}%)"
+    NIVEL_3_2_MOMENTUM_FRACO = "❌ NÍVEL 3.2: Momentum histórico fraco (+{momentum:.2f}%)"
+    NIVEL_3_3_VOLUME_ADEQUADO = "✅ NÍVEL 3.3: Volume adequado ({vol_ratio:.2f}x{extra})"
+    NIVEL_3_3_VOLUME_INSUFICIENTE = "❌ NÍVEL 3.3: Volume insuficiente ({vol_ratio:.2f}x)"
+    NIVEL_3_4_VELAS_VERDES_OK = "✅ NÍVEL 3.4: Velas verdes ({velas} >= {min})"
+    NIVEL_3_4_POUCAS_VELAS_VERDES = "❌ NÍVEL 3.4: Poucas velas verdes ({velas} < {min})"
+    NIVEL_3_5_TENDENCIA_FAVORAVEL = "✅ NÍVEL 3.5: Tendência/EMAs favoráveis ({tendencia})"
+    NIVEL_3_5_TENDENCIA_NAO_FAVORAVEL = "❌ NÍVEL 3.5: Tendência/EMAs não favoráveis ({tendencia})"
+    CONFIRMACOES = "📊 Confirmações: {confirmacoes}/{total} (mínimo: {min})"
+    POUCAS_CONFIRMACOES = "🚫 NÍVEL 3: Poucas confirmações ({confirmacoes}/{total} < {min})"
+    
+    # === NÍVEL 4 (PROTEÇÕES) ===
+    NIVEL_4_1_PRECO_ACIMA_EMA9 = "🚫 NÍVEL 4.1: Preço muito acima da EMA9 (+{distancia:.2f}% > +5%) - EVITANDO TOPO"
+    NIVEL_4_2_PRECO_ACIMA_MINIMO = "🚫 NÍVEL 4.2: Preço muito acima do mínimo (+{distancia:.2f}% > +10%) - EVITANDO TOPO"
+    NIVEL_4_3_ALTA_SUSPEITA = "🚫 NÍVEL 4.3: Alta muito suspeita ({altas}/3 velas, +{variacao:.2f}%)"
+    NIVEL_4_4_PRECO_ACIMA_MEDIA = "🚫 NÍVEL 4.4: Preço muito acima da média (+{distancia:.2f}% > +10%) - EVITANDO TOPO"
+    NIVEL_4_5_PRECO_PROXIMO_MAXIMO = "🚫 NÍVEL 4.5: Preço muito próximo do máximo ({distancia:.3f}% < 0.1%) - EVITANDO TOPO"
+    NIVEL_4_6_PRECO_PROXIMO_HIGH = "🚫 NÍVEL 4.6: Preço muito próximo do high da vela ({distancia:.3f}% < 0.05%) - EVITANDO TOPO"
+    
+    # === INDICADORES ===
+    SEPARADOR_INDICADORES = "┌─────────────────────────────────────────────"
+    TITULO_INDICADORES = "│ 📊 INDICADORES"
+    SEPARADOR_INDICADORES_MEIO = "├─────────────────────────────────────────────"
+    PRECO_ATUAL = "│ 💰 Preço atual: ${preco:.6f} (última vela: ${preco_vela:.6f})"
+    VARIACAO_ATUAL = "│ ⬆️ Variação atual: {variacao:+.3f}%"
+    DISTANCIA_EMA9 = "│ 📊 Distância EMA9: {distancia:+.2f}% (máx: +2.5%)"
+    DISTANCIA_MINIMO = "│ 📊 Distância mínimo: {distancia:+.2f}% (máx: +3.5%)"
+    DISTANCIA_MEDIA_10 = "│ 📊 Distância média 10: {distancia:+.2f}% (máx: +2.5%)"
+    DISTANCIA_MAXIMO = "│ 📊 Distância máximo: {distancia:+.2f}% (mín: +0.1%)"
+    DISTANCIA_HIGH_VELA = "│ 📊 Distância high vela: {distancia:+.3f}% (deve ser >0%)"
+    ALTAS_CONSISTENTES = "│ 📈 Altas consistentes: {altas}/3 velas"
+    RSI_INDICADOR = "│ 📈 RSI: {rsi:.1f} (min: {min}, max: {max})"
+    MOMENTUM_INDICADOR = "│ 🚀 Momentum: {momentum:+.2f}% (min: +{min:.1f}%)"
+    VOLUME_INDICADOR = "│ 📊 Volume: {vol_ratio:.2f}x (min: {min}x)"
+    VELAS_VERDES_INDICADOR = "│ 🕯️ Velas verdes: {velas}/5 (min: {min})"
+    EMA9_INDICADOR = "│ 📈 EMA9: ${ema9:.6f}"
+    EMA21_INDICADOR = "│ 📈 EMA21: ${ema21:.6f}"
+    TENDENCIA_INDICADOR = "│ 📊 Tendência: {tendencia}"
+    PADRAO_CANDLESTICK = "│ 🕯️ Padrão Candlestick: {padrao}"
+    SUPORTE_RESISTENCIA = "│ 📊 Suporte: ${suporte:.6f} | Resistência: ${resistencia:.6f}"
+    FORCA_RELATIVA = "│ 💪 Força Relativa vs BTC: {forca:+.2f}%"
+    DIVERGENCIA_RSI = "│ 📈 Divergência RSI: {divergencia}"
+    SEPARADOR_INDICADORES_FIM = "└─────────────────────────────────────────────"
+    
+    # === NÍVEL 5 (AVISOS) ===
+    NIVEL_5_1_POUCAS_VELAS_VERDES = "⚠️ NÍVEL 5.1: Poucas velas verdes ({velas} < {min}) - mas outras confirmações compensam"
+    NIVEL_5_1_VELAS_VERDES_OK = "✅ NÍVEL 5.1: Velas verdes OK ({velas})"
+    NIVEL_5_2_PRECO_ABAIXO_EMA9 = "⚠️ NÍVEL 5.2: Preço abaixo EMA9 - mas outras confirmações compensam"
+    
+    # === SCORE ===
+    CALCULANDO_SCORE = "📊 Calculando score..."
+    SCORE_EXPLOSAO = "         +{bonus:.0f}% por explosão atual (>{pct:.1f}%)"
+    SCORE_SUBIDA_FORTE = "         +{bonus:.0f}% por subida forte atual (>{pct:.1f}%)"
+    SCORE_SUBIDA = "         +{bonus:.0f}% por subida atual (>{pct:.1f}%)"
+    SCORE_VARIACAO_MINIMA = "         +{bonus:.0f}% por variação positiva mínima ({variacao:+.3f}%)"
+    SCORE_MOMENTUM_MUITO_FORTE = "         +{bonus:.0f}% por momentum muito forte (>{pct:.1f}%)"
+    SCORE_MOMENTUM_FORTE = "         +{bonus:.0f}% por momentum forte (>{pct:.1f}%)"
+    SCORE_MOMENTUM_BOM = "         +{bonus:.0f}% por momentum bom (>{pct:.1f}%)"
+    SCORE_MOMENTUM_POSITIVO = "         +{bonus:.0f}% por momentum positivo (>{pct:.1f}%)"
+    SCORE_TENDENCIA_ALTA_FORTE = "         +{bonus:.0f}% por tendência ALTA_FORTE"
+    SCORE_TENDENCIA_ALTA = "         +{bonus:.0f}% por tendência ALTA"
+    SCORE_BULLISH_ENGULFING = "         +{bonus:.0f}% por padrão BULLISH ENGULFING (muito forte)"
+    SCORE_HAMMER = "         +{bonus:.0f}% por padrão HAMMER (reversão)"
+    SCORE_MARUBOZU_VERDE = "         +{bonus:.0f}% por padrão MARUBOZU VERDE (muito forte)"
+    SCORE_VERDE_FORTE = "         +{bonus:.0f}% por padrão VERDE FORTE"
+    BONUS_FORCA_RELATIVA = "         +{bonus:.0f}% por força relativa vs BTC (>{pct:.1f}%)"
+    
+    # === COMPRA ===
+    SCORE_FINAL = "📊 Score final: {score:.2f} (mínimo: {minimo:.2f})"
+    SCORE_INSUFICIENTE = "🚫 SCORE INSUFICIENTE: {score:.2f} < {minimo:.2f}"
+    COMPRANDO = "💰 COMPRANDO {symbol}"
+    ORDEM_COMPRA_ENVIADA = "⚡ Ordem de compra REAL enviada para Binance"
+    ORDEM_COMPRA_SIMULADA = "🎮 Ordem de compra SIMULADA (modo teste)"
+    COMPRA_EXECUTADA = "✅ COMPRA EXECUTADA"
+    PREÇO_COMPRA = "│ 💰 Preço: ${preco:.6f}"
+    QUANTIDADE = "│ 📦 Quantidade: {quantidade:.8f}"
+    VALOR_TOTAL = "│ 💵 Valor total: ${valor:.2f}"
+    STOP_LOSS_COMPRA = "│ 🛑 Stop Loss: ${stop_loss:.6f} (-{pct:.1f}%)"
+    PREÇO_ALVO = "│ 🎯 Preço alvo: ${alvo:.6f} (+{pct:.1f}%)"
+    
+    # === VENDA ===
+    EXECUTANDO_VENDA = "💸 EXECUTANDO VENDA"
+    MOTIVO_VENDA = "│ 📍 Motivo: {motivo}"
+    PREÇO_ENTRADA = "│ 💰 Preço entrada: ${preco:.6f}"
+    PREÇO_ATUAL_VENDA = "│ 💰 Preço atual: ${preco:.6f}"
+    LUCRO_BRUTO_STOP_LOSS = "│ 🛑 Lucro bruto: ${lucro:.4f} (STOP LOSS: limitando perdas)"
+    LUCRO_BRUTO = "│ ✅ Lucro bruto: ${lucro:.4f} (>= ${minimo:.2f}, objetivo: {objetivo}% = ${objetivo_valor:.2f})"
+    ENVIANDO_ORDEM_REAL = "│ ⚡ Enviando ordem REAL para Binance..."
+    ENVIANDO_ORDEM_SIMULADA = "│ 🎮 Enviando ordem SIMULADA (modo teste)..."
+    VENDA_EXECUTADA = "✅ VENDA EXECUTADA"
+    PREÇO_VENDA = "│ 💰 Preço: ${preco:.6f}"
+    LUCRO_LIQUIDO = "│ 💰 Lucro líquido: ${lucro:.4f} ({percentual:+.2f}%)"
+    LUCRO_INSUFICIENTE = "⏸️ LUCRO INSUFICIENTE: ${lucro:.4f} < ${minimo:.2f} ({pct}%) | Aguardando lucro mínimo (exceto stop loss)"
+    STOP_LOSS_VENDA = "🛑 STOP LOSS: Prejuízo ${lucro:.4f} >= -${stop_loss_valor:.2f} ({pct:.0f}%) | VENDENDO IMEDIATAMENTE!"
+    
+    # === VERIFICAÇÃO DE POSIÇÕES ===
+    STOP_LOSS_POSICAO = "🛑 STOP LOSS: Prejuízo ${lucro:.4f} >= -${stop_loss_valor:.2f} ({pct:.0f}%) | VENDENDO IMEDIATAMENTE!"
+    QUEDA_RAPIDA = "🚨 QUEDA RÁPIDA: {pct:.2f}% em {tempo:.0f}s | VENDENDO PARA LIMITAR PERDAS"
+    FORÇA_FORTE = "📈 FORÇA FORTE: Lucro {pct:.2f}% (${lucro:.4f}) | Aguardando até {alvo}% ou perder força"
+    TIMEOUT = "⏰ TIMEOUT: {tempo} | VENDENDO FORÇADAMENTE"
+    
+    # === OUTROS ===
+    LINHA_VAZIA = ""
+    LINHA_SEPARADORA = ""
+
